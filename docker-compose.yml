@@ -1,0 +1,29 @@
+version: '3'
+services:
+  mysqldb:
+    image: mysql:8.0.30
+    environment:
+      MYSQL_ROOT_PASSWORD: changemeplease
+    networks:
+      - docker_net
+    ports:
+      - "127.0.0.1:3306:3306"
+
+  phpmyadmin:
+    image: phpmyadmin
+    environment:
+      PMA_HOST: mysqldb
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: changemeplease
+    labels:
+      - "traefik.port=80"
+      - "traefik.frontend.rule=Host:admin.localhost"
+      - "traefik.protocol=http"
+    networks:
+      - docker_net
+    ports:
+      - "127.0.0.1:8080:80"
+
+networks:
+  docker_net:    
+    driver: bridge
