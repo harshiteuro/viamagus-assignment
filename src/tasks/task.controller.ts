@@ -27,7 +27,7 @@ export class TasksController {
 
   @Patch('/:id/assign')
   @UseGuards(BearerAuthGuard) 
-  assignTaskToMember(@Param('id') id: number, @Body('assignee') assignee: string) {
+  assignTaskToMember(@Param('id') id: number, @Body('assignee') assignee: number) {
     return this.tasksService.assignTaskToMember(id, assignee);
   }
 

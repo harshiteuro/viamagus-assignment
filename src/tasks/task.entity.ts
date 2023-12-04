@@ -1,5 +1,5 @@
-// src/tasks/task.entity.ts
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import { TeamMember } from '../teams/team-member.entity';
 
 @Entity()
 export class Task {
@@ -12,8 +12,8 @@ export class Task {
   @Column()
   due_date: Date;
 
-  @Column()
-  assignee: string;
+  @ManyToOne(() => TeamMember, teamMember => teamMember.id, { nullable: true })
+  assignee: TeamMember;
 
   @Column()
   status: string;

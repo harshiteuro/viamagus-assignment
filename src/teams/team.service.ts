@@ -11,9 +11,10 @@ export class TeamsService {
     private teamsRepository: Repository<Team>,
   ) {}
 
-  getAllTeams() {
+  async getAllTeams() {
     return this.teamsRepository.find();
   }
+  
 
   createTeam(team: Team) {
     return this.teamsRepository.save(team);

@@ -1,6 +1,7 @@
 // src/teams/team.controller.ts
 import { Controller, Get, Post, Body, UseGuards } from '@nestjs/common';
 import { TeamsService } from './team.service';
+
 import { BearerAuthGuard } from '../auth/bearer-auth.guard';
 
 @Controller('teams')

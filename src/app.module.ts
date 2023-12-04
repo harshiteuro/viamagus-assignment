@@ -3,9 +3,10 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { TasksModule } from './tasks/tasks.module';
 import { TeamsModule } from './teams/teams.module';
-import { AuthService } from './auth/auth.service'; 
 import { ConfigModule } from '@nestjs/config'; 
 
+import { TeamMembersModule } from './teams/team-members.module';
+import { ConfigService } from '@nestjs/config';
 @Module({
   imports: [
     ConfigModule.forRoot(),
@@ -21,7 +22,8 @@ import { ConfigModule } from '@nestjs/config';
       dropSchema:true }),
     TasksModule,
     TeamsModule,
+    TeamMembersModule,
   ],
-  providers:[AuthService]
+  providers:[]
 })
 export class AppModule {}

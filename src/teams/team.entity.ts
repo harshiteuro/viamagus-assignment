@@ -1,5 +1,5 @@
-// src/teams/team.entity.ts
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { TeamMember } from './team-member.entity';
 
 @Entity()
 export class Team {
@@ -8,8 +8,5 @@ export class Team {
 
   @Column()
   team_name: string;
-
-  @Column({ type: 'json', nullable: true })
-  team_members: string[];
 
 }
